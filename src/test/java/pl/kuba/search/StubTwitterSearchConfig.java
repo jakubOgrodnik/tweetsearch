@@ -1,0 +1,18 @@
+package pl.kuba.search;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
+import java.util.Arrays;
+
+@Configuration
+public class StubTwitterSearchConfig {
+    @Primary
+    @Bean
+    public SearchServiceInterface twitterSearch() {
+        return (searchType, keywords) -> Arrays.asList(
+                new LightTweet("Treść tweeta"),
+                new LightTweet("Treść innego tweeta")
+        );
+    }
+}
